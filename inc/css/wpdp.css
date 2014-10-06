@@ -1,0 +1,29 @@
+#secondpass-strength-result {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    display: none;
+    float: left;
+    margin: 13px 5px 5px 1px;
+    padding: 3px 5px;
+    text-align: center;
+    width: 200px;
+}
+#secondpass-strength-result.short {
+    background-color: #ffa0a0;
+    border-color: #f04040;
+}
+#secondpass-strength-result.bad {
+    background-color: #ffb78c;
+    border-color: #ff853c;
+}
+#secondpass-strength-result.good {
+    background-color: #ffec8b;
+    border-color: #fc0;
+}
+#secondpass-strength-result.strong {
+    background-color: #c3ff88;
+    border-color: #8dff1c;
+}
+.indicator-hint {
+    padding-top: 8px;
+}
