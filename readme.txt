@@ -3,7 +3,7 @@ Contributors: marutim
 Tags: wp double protection, password protection, double passwords, multiple passwords, security, wordpress security, wp security
 Requires at least: 3.5.1
 Tested up to: 4.0
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,9 +15,9 @@ You can see more, on how to use the plugin here in this blog [WP Double Protecti
 = Plugin's Features: =
 
 * Allow user to use two different password for the website and thus makes the website extra secure.
-* Once the plugin is activated and until the user has not set his second password in his user profile, the second password will be same as the first password.
+* Once the plugin is activated and until the user has not set his second password in the user profile, the second password will be same as the first password.
 * Once the second password is set from the user profile, the user would now need to enter the corresponding passwords while login.
-* Once the plugin is reactivated or user has successfully reset his password, the second password is set to the main or primary or first password until the second passoword is set again.
+* To reset the second password the user has to follow the default lost password link and it will reset the second password to the newly chosen main password and the the user would have to again set a different second password from the user profile
 
 == Installation ==
 1. Upload "**wp-double-protection**" folder to the "wp-content/**plugins**" directory.
@@ -30,15 +30,19 @@ A. When you forget either of the password, reset your password using the normall
 
 **Q. What happens if I reactive the plugin?**
 
-A. when you reactivate the plugins, all the second passwords of the user gets reset to the primary or main or first password, until the second passoword is set again from user profile.
+A. With version 1.1, the reactivating of plugin does not reset the second password. Only resetting password resets the second password to the new first or main password.
 
 == Screenshots ==
 1. WP login
 2. User Profile
 
 == Changelog ==
+= 1.1 (9th Oct 2014) =
+* Allowed to keep the second password for the users after reactivating the plugin.
+* No resetting of second password on reactivating the plugin.
+
 = 1.0 (6th Oct 2014) =
 * First release.
 
 == Upgrade Notice ==
-1.0
+1.1
