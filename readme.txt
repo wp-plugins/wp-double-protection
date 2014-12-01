@@ -1,5 +1,6 @@
 === WP Double Protection ===
 Contributors: marutim
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=marutimohanty89@gmail.com&item_name=WP%20Double%20Protection
 Tags: wp double protection, password protection, double passwords, multiple passwords, security, wordpress security, wp security
 Requires at least: 3.5.1
 Tested up to: 4.0
