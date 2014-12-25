@@ -3,7 +3,7 @@
  * Plugin Name: WP Double Protection
  * Plugin URI: http://www.sourcexpress.com/wp-double-protection/
  * Description: This plugin allows a second password option and thus making your website doubly protected.
- * Version: 1.0
+ * Version: 1.1
  * Author: Maruti Mohanty
  * Author URI: http://www.sourcexpress.com/
 */

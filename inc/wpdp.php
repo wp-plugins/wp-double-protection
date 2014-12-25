@@ -27,7 +27,7 @@ class WP_double_protection {
 	}
 
 	/**
-	 * Adds the wpdb flag to the user meta of the available users on activaton.
+	 * Adds the wpdp flag to the user meta of the available users on activaton.
 	 *
 	 * @param void
 	 *
@@ -38,13 +38,15 @@ class WP_double_protection {
 		$wpdp_users_id = wp_list_pluck( $wpdp_users, 'ID' );
 
 		foreach ( $wpdp_users_id as $user_id ) {
-			update_user_meta( $user_id, 'wpdp_flag', 0 );
-			update_user_meta( $user_id, 'wpdp_second_password', 0 );
+			if ( 1 != get_user_meta( $user_id, 'wpdp_flag', true ) ) {
+				update_user_meta( $user_id, 'wpdp_flag', 0 );
+				update_user_meta( $user_id, 'wpdp_second_password', 0 );
+			}
 		}
 	}
 
 	/**
-	 * Adds the wpdb flag to the user meta of the newly added user.
+	 * Adds the wpdp flag to the user meta of the newly added user.
 	 *
 	 * @param int $user_id the id of the newly added user
 	 *
@@ -71,7 +73,7 @@ class WP_double_protection {
 	}
 
 	/**
-	 * Adds the wpdb error codes to the array of shake error codes
+	 * Adds the wpdp error codes to the array of shake error codes
 	 *
 	 * @param array   $shake_error_codes The array of default error codes for shake js
 	 *
@@ -84,7 +86,7 @@ class WP_double_protection {
 	}
 
 	/**
-	 * Adds the wpdb error codes to the array of shake error codes
+	 * Adds the wpdp error codes to the array of shake error codes
 	 *
 	 * @param object  $user     WP_User
 	 * @param string  $password the user password
