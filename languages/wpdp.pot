@@ -1,0 +1,49 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Text in function
+#: wpdp.php:1
+msgid "<strong>ERROR</strong>: Invalid second password."
+msgstr ""
+
+#. Text in function
+#: wpdp.php:1
+msgid "<strong>ERROR</strong>: The second password field is empty."
+msgstr ""
+
+#. Text in echo
+#: wpdp.php:163
+msgid "Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ &amp; )."
+msgstr ""
+
+#. Text in echo
+#: wpdp.php:153
+msgid "If you would like to change the password type a new one. Otherwise leave this blank."
+msgstr ""
+
+#. Text in echo
+#: wpdp.php:149
+msgid "New Second Password"
+msgstr ""
+
+#. Text in echo
+#: wpdp.php:157
+msgid "Repeat New Second Password"
+msgstr ""
+
+#. Text in function
+#: wpdp.php:1
+msgid "Second Password"
+msgstr ""
+
+#. Text in echo
+#: wpdp.php:162
+msgid "Strength indicator"
+msgstr ""
+
+#. Text in echo
+#: wpdp.php:160
+msgid "Type your new password again."
+msgstr ""

@@ -13,6 +13,7 @@ class WP_double_protection {
 	 */
 	public function __construct() {
 		register_activation_hook( WPDP_FILE, array( $this, 'wpdp_register_activation' ) );
+		add_action( 'init', array( $this, 'wpdp_add_localization' ) );
 		add_action( 'user_register', array( $this, 'wpdp_user_register' ) );
 		add_action( 'login_form', array( $this, 'wpdp_add_second_password_field' ) );
 		add_filter( 'shake_error_codes', array( $this, 'wpdp_shake_error_codes' ) );
@@ -27,7 +28,19 @@ class WP_double_protection {
 	}
 
 	/**
-	 * Adds the wpdb flag to the user meta of the available users on activaton.
+	 * Adds the localization.
+	 *
+	 * @param void
+	 *
+	 * @return void
+	 */
+	public function wpdp_add_localization() {
+		// Localization
+		load_plugin_textdomain( 'wpdp', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	}
+
+	/**
+	 * Adds the wpdp flag to the user meta of the available users on activaton.
 	 *
 	 * @param void
 	 *
@@ -38,15 +51,17 @@ class WP_double_protection {
 		$wpdp_users_id = wp_list_pluck( $wpdp_users, 'ID' );
 
 		foreach ( $wpdp_users_id as $user_id ) {
-			update_user_meta( $user_id, 'wpdp_flag', 0 );
-			update_user_meta( $user_id, 'wpdp_second_password', 0 );
+			if ( 1 != get_user_meta( $user_id, 'wpdp_flag', true ) ) {
+				update_user_meta( $user_id, 'wpdp_flag', 0 );
+				update_user_meta( $user_id, 'wpdp_second_password', 0 );
+			}
 		}
 	}
 
 	/**
-	 * Adds the wpdb flag to the user meta of the newly added user.
+	 * Adds the wpdp flag to the user meta of the newly added user.
 	 *
-	 * @param int $user_id the id of the newly added user
+	 * @param int     $user_id the id of the newly added user
 	 *
 	 * @return void
 	 */
@@ -64,14 +79,14 @@ class WP_double_protection {
 	 */
 	public function wpdp_add_second_password_field() {
 		$html  = '';
-		$html .= '<p><label for="second_pass">' . __( 'Second Password' );
+		$html .= '<p><label for="second_pass">' . __( 'Second Password', 'wpdp' );
 		$html .= '<input type="password" name="second_pass" id="second_pass" class="input" value="" size="20" /></label></p>';
 
 		echo $html;
 	}
 
 	/**
-	 * Adds the wpdb error codes to the array of shake error codes
+	 * Adds the wpdp error codes to the array of shake error codes
 	 *
 	 * @param array   $shake_error_codes The array of default error codes for shake js
 	 *
@@ -84,7 +99,7 @@ class WP_double_protection {
 	}
 
 	/**
-	 * Adds the wpdb error codes to the array of shake error codes
+	 * Adds the wpdp error codes to the array of shake error codes
 	 *
 	 * @param object  $user     WP_User
 	 * @param string  $password the user password
@@ -97,7 +112,7 @@ class WP_double_protection {
 			$wpdp_flag        = get_user_meta( $user->ID, 'wpdp_flag', true );
 			if ( $wpdp_second_pass && $wpdp_flag == 1 ) {
 				if ( ! wp_check_password( $_POST['second_pass'], $wpdp_second_pass, $user->ID ) ) {
-					$user = new WP_Error( 'invalid_second_password', __( '<strong>ERROR</strong>: Invalid second password.' ) );
+					$user = new WP_Error( 'invalid_second_password', __( '<strong>ERROR</strong>: Invalid second password.', 'wpdp' ) );
 
 					return $user;
 				} else {
@@ -106,7 +121,7 @@ class WP_double_protection {
 			}
 			if ( $wpdp_flag == 0 ) {
 				if ( $password != $_POST['second_pass'] ) {
-					$user = new WP_Error( 'invalid_second_password', __( '<strong>ERROR</strong>: Invalid second password.' ) );
+					$user = new WP_Error( 'invalid_second_password', __( '<strong>ERROR</strong>: Invalid second password.', 'wpdp' ) );
 
 					return $user;
 				} else {
@@ -114,7 +129,7 @@ class WP_double_protection {
 				}
 			}
 		} else {
-			$user = new WP_Error( 'empty_second_password', __( '<strong>ERROR</strong>: The second password field is empty.' ) );
+			$user = new WP_Error( 'empty_second_password', __( '<strong>ERROR</strong>: The second password field is empty.', 'wpdp' ) );
 
 			return $user;
 		}
@@ -131,21 +146,21 @@ class WP_double_protection {
 		?>
 		<table class="form-table">
 			<tr id="second-password">
-				<th><label for="secondpass1"><?php _e( 'New Second Password' ); ?></label></th>
+				<th><label for="secondpass1"><?php _e( 'New Second Password', 'wpdp' ); ?></label></th>
 				<td>
 					<input class="hidden" value=" " />
 					<input type="password" name="secondpass1" id="secondpass1" class="regular-text" size="16" value="" autocomplete="off" /><br />
-					<span class="description"><?php _e( 'If you would like to change the password type a new one. Otherwise leave this blank.' ); ?></span>
+					<span class="description"><?php _e( 'If you would like to change the password type a new one. Otherwise leave this blank.', 'wpdp' ); ?></span>
 				</td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="secondpass2"><?php _e( 'Repeat New Second Password' ); ?></label></th>
+				<th scope="row"><label for="secondpass2"><?php _e( 'Repeat New Second Password', 'wpdp' ); ?></label></th>
 				<td>
 					<input name="secondpass2" type="password" id="secondpass2" class="regular-text" size="16" value="" autocomplete="off" /><br />
-					<span class="description" for="secondpass2"><?php _e( 'Type your new password again.' ); ?></span>
+					<span class="description" for="secondpass2"><?php _e( 'Type your new password again.', 'wpdp' ); ?></span>
 					<br />
-					<div id="secondpass-strength-result"><?php _e( 'Strength indicator' ); ?></div>
-					<p class="description indicator-hint"><?php _e( 'Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ &amp; ).' ); ?></p>
+					<div id="secondpass-strength-result"><?php _e( 'Strength indicator', 'wpdp' ); ?></div>
+					<p class="description indicator-hint"><?php _e( 'Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ &amp; ).', 'wpdp' ); ?></p>
 				</td>
 			</tr>
 		</table>
