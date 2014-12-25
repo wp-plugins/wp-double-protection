@@ -20,6 +20,8 @@ You can see more, on how to use the plugin here in this blog [WP Double Protecti
 * Once the second password is set from the user profile, the user would now need to enter the corresponding passwords while login.
 * To reset the second password the user has to follow the default lost password link and it will reset the second password to the newly chosen main password and then the user would have to again set a different second password from the user profile
 
+You can also help me make the plugin better by contributing to the plugin in [Github](https://github.com/marutim/wp-double-protection)
+
 == Installation ==
 1. Upload "**wp-double-protection**" folder to the "wp-content/**plugins**" directory.
 2. Activate the plugin through the "**Plugins**" menu in WordPress
