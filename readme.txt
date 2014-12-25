@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=marutimo
 Tags: wp double protection, password protection, double passwords, multiple passwords, security, wordpress security, wp security
 Requires at least: 3.5.1
 Tested up to: 4.1
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,9 @@ A. With version 1.1, the reactivating of plugin does not reset the second passwo
 2. User Profile
 
 == Changelog ==
+= 1.2 (25th Dec 2014) =
+* Added localization and made the plugin translation ready.
+
 = 1.1 (9th Oct 2014) =
 * Allowed to keep the second password for the users after reactivating the plugin.
 * No resetting of second password on reactivating the plugin.
@@ -46,4 +49,4 @@ A. With version 1.1, the reactivating of plugin does not reset the second passwo
 * First release.
 
 == Upgrade Notice ==
-1.1
+1.2
