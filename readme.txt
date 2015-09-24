@@ -3,7 +3,7 @@ Contributors: marutim
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=marutimohanty89@gmail.com&item_name=WP%20Double%20Protection
 Tags: wp double protection, password protection, double passwords, multiple passwords, security, wordpress security, wp security
 Requires at least: 3.5.1
-Tested up to: 4.3
+Tested up to: 4.3.1
 Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
